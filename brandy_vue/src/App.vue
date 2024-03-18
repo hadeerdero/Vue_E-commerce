@@ -1,7 +1,7 @@
 <template>
-  <div id="wrapper">
-    <nav class="navbar navbar-expand-lg navbar-light  fixed-top">
-      <div class="container-fluid">
+  <div id="app">
+    <nav class="navbar navbar-expand-lg navbar-light ">
+      <div class="container">
         <a class="navbar-brand" href="#"><strong>Brandy</strong></a>
         <button class="navbar-toggler" type="button" 
         data-bs-toggle="collapse" 
@@ -25,11 +25,11 @@
               <router-link to="/" class="nav-link p-lg-2">Winter</router-link>
             </li>
 
-            <li class="nav-item">
-              <router-link to="/" class="btn btn-light  p-lg-2">Log in</router-link>
+            <li class="nav-item login-btn">
+              <router-link to="/" class="btn btn-light  p-lg-2 me-2">Log in</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/" class="btn btn-success p-lg-2 ms-2">
+              <router-link to="/" class="btn btn-success p-lg-2 ">
                 <span class="icon"> <i class="fas fa-shopping-cart"></i></span>
                 <span>Cart</span>
               </router-link>
@@ -45,13 +45,13 @@
     <section class="section">
       <router-view/>
     </section>
-    <footer class="footer">
-      <p class="text-center">Copyright (c) 2024</p>
-    </footer>
     <!-- <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </nav> -->
+    <footer class="footer">
+      <p class="text-center">Copyright (c) 2024</p>
+    </footer>
   </div>
   
 </template>

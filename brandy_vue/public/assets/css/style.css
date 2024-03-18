@@ -3,8 +3,25 @@
     --dark-color: #19283f;
     --green-color:#56C596;
 }
+* {
+    box-sizing: border-box;
+  }
+  article,
+aside,
+dialog,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+  display: block;
+}
 body{
     font-family: "Roboto", sans-serif;
+    margin: 0;
 }
 .navbar-brand{
     color: white !important;
@@ -25,3 +42,14 @@ body{
 .navbar .navbar-brand:hover{
     color: var(--green-color) !important;
 }
+.footer{
+    background-color:gray;
+}
+.navbar-toggler{
+    background-color: white !important;
+}
+@media screen and (min-width: 320px) {
+ .login-btn{
+    margin-bottom: 10px;
+ }
+  }
