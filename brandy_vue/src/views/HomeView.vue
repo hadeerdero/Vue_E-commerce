@@ -15,12 +15,15 @@
       <h2>Latest products</h2>
     </div>
     <div v-for="product in latestProducts" :key="product.id">
-      <div class="row">
-        <figure>
-          <img :src="product.get_thumbnail">
-        </figure>
-        <h3>{{product.name}}</h3>
-        <p>${{product.price}}</p>
+      <div class="row products">
+        <div class="col-4 product-card">
+
+          <h3>{{product.name}}</h3>
+          <figure class="product-image">
+            <img :src="product.get_thumbnail">
+          </figure>
+          <p>${{product.price}}</p>
+        </div>
       </div>
 
     </div>
@@ -31,6 +34,7 @@
 <script>
 // @ is an alias to /src
 import axios from 'axios'
+import {api} from "@/plugins/axios/axios"
 export default {
   name: 'HomeView',
   data(){
@@ -40,15 +44,42 @@ export default {
   },
   components: {
   },
-  mounted(){
-    this.getLatestProducts()
-  },
+  // mounted(){
+  //   this.getLatestProducts()
+  // },
+  created() {
+  this.getLatestProducts();
+},
   methods:{
-    async getLatestProducts(){
-      await axios.get('/api/v1/latest-products/')
+//   async getLatestProducts() {
+//   let response = () => {
+//     return new Promise(function(resolve, reject) {
+//       axios.get('http://127.0.0.1:8000/api/v1/latest-products' ).then(response => {
+//         resolve(response);
+//       });
+//     });
+//   };
+//   let responseData = await response();
+//   console.log(responseData.data);
+//   this.latestProducts = responseData.data
+// }
+    // async getLatestProducts() {
+    //   try {
+    //     const response = await axios.get('/api/v1/latest-products/')
+    //     console.log(response);
+    //     return Promise.resolve(response.data)
+    //   } catch (error) {
+    //     console.log(error)
+    //     return Promise.reject(error)
+    //   }
+     
+    // },
+    getLatestProducts(){
+     
+      axios.get('/api/v1/latest-products/')
       .then(response =>{
         console.log(response)
-        this.latestProducts = response.data
+        this.latestProducts = response.data.data
       })
       .catch(error =>{
         console.log(error)
@@ -63,4 +94,4 @@ export default {
   height: 30vh;
  background-color: gray;
 }
-</style>
+</style>@/plugins/axios/axios

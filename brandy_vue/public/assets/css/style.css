@@ -48,6 +48,21 @@ body{
 .navbar-toggler{
     background-color: white !important;
 }
+
+.product-card{
+    background-color: #fff;
+    min-height: 14em;
+    overflow: hidden;
+    border-radius:  10px;
+    transition: 0.7s ease;
+    margin: 15px;
+}
+.product-card:hover{
+    transform: scale(1.1);
+}
+.product-image img{ 
+width: 100%;
+}
 @media screen and (min-width: 320px) {
  .login-btn{
     margin-bottom: 10px;
