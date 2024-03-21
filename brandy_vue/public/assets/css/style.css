@@ -48,14 +48,23 @@ body{
 .navbar-toggler{
     background-color: white !important;
 }
+.wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 6% auto 0;
 
+}
 .product-card{
-    background-color: #fff;
-    min-height: 14em;
-    overflow: hidden;
-    border-radius:  10px;
-    transition: 0.7s ease;
+    position: relative;
+    width: 280px;
+    height: 400px;
     margin: 15px;
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    width:300px !important ;
+    transition: 0.7s ease;
 }
 .product-card:hover{
     transform: scale(1.1);

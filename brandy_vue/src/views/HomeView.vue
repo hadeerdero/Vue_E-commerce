@@ -15,14 +15,26 @@
       <h2>Latest products</h2>
     </div>
     <div v-for="product in latestProducts" :key="product.id">
-      <div class="row products">
-        <div class="col-4 product-card">
-
-          <h3>{{product.name}}</h3>
-          <figure class="product-image">
+      <div class="wrapper">
+        <div class="product-card">
+          <div class="product-img">
             <img :src="product.get_thumbnail">
-          </figure>
-          <p>${{product.price}}</p>
+          </div>
+          <div class="overlay">
+            <button class="btn-add-to-cart">
+              Add to Cart
+            </button>
+            <button class="view-details">
+              View Details
+            </button>
+            </div>
+            <div class="info">
+              <h3>{{product.name}}</h3>
+              <p>${{product.price}}</p>
+              <p>{{product.description}}</p>
+            </div>
+          
+         
         </div>
       </div>
 
