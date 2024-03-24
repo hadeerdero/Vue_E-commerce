@@ -2,8 +2,9 @@
   <div class="home">
    <section class="welcom-section d-flex justify-content-center p-5">
     <div>
-      <p class="text-center h1 text-light">
-        Welcom to Brandy
+      <p class="text-center h1 text-light ">
+        <span class="auto-type"></span>
+        
       </p>
       <p class="text-center text-light">
         The best clothes store online
@@ -14,36 +15,38 @@
     <div class="d-flex justify-content-center p-5">
       <h2>Latest products</h2>
     </div>
+    <div class="wrapper">
     <div v-for="product in latestProducts" :key="product.id">
-      <div class="wrapper">
         <div class="product-card">
           <div class="product-img">
             <img :src="product.get_thumbnail">
+            <div class="overlay">
+              <button class="btn-add-to-cart">
+                Add to Cart
+              </button>
+              <button class="view-details">
+                View Details
+              </button>
+              </div>
           </div>
-          <div class="overlay">
-            <button class="btn-add-to-cart">
-              Add to Cart
-            </button>
-            <button class="view-details">
-              View Details
-            </button>
-            </div>
             <div class="info">
               <h3>{{product.name}}</h3>
-              <p>${{product.price}}</p>
+              <p class="price">${{product.price}}</p>
               <p>{{product.description}}</p>
             </div>
           
          
         </div>
-      </div>
+    </div>
 
     </div>
    </div>
   </div>
 </template>
 
+
 <script>
+import Typed from 'typed.js';
 // @ is an alias to /src
 import axios from 'axios'
 import {api} from "@/plugins/axios/axios"
@@ -62,7 +65,30 @@ export default {
   created() {
   this.getLatestProducts();
 },
+mounted() {
+    this.initializeTyped();
+  },
   methods:{
+    initializeTyped() {
+      // const options = {
+      //   strings: ['Welcom' ,'to' ,'Brandy'],
+      //   typeSpeed: 50,
+      //   loop: true,
+      //   loopCount: Infinity
+      // };
+      // this.typed = new Typed(this.$refs.typed, options);
+      this.typed = new Typed('.auto-type',{
+        strings: ['Welcom to Brandy'],
+        typeSpeed: 150,
+
+      })
+    },
+  
+  beforeDestroy() {
+    if (this.typed) {
+      this.typed.destroy();
+    }
+  },
 //   async getLatestProducts() {
 //   let response = () => {
 //     return new Promise(function(resolve, reject) {
