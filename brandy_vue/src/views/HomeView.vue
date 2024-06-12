@@ -17,26 +17,7 @@
     </div>
     <div class="wrapper">
     <div v-for="product in latestProducts" :key="product.id">
-        <div class="product-card">
-          <div class="product-img">
-            <img :src="product.get_thumbnail">
-            <div class="overlay">
-              <button class="btn-add-to-cart">
-                Add to Cart
-              </button>
-              <button class="view-details">
-                View Details
-              </button>
-              </div>
-          </div>
-            <div class="info">
-              <h3>{{product.name}}</h3>
-              <p class="price">${{product.price}}</p>
-              <p>{{product.description}}</p>
-            </div>
-          
-         
-        </div>
+        <Product :product="product"></Product>
     </div>
 
     </div>
@@ -48,7 +29,8 @@
 <script>
 import Typed from 'typed.js';
 // @ is an alias to /src
-import axios from 'axios'
+import axios from 'axios';
+import Product from '@/components/ProductBox.vue'
 import {api} from "@/plugins/axios/axios"
 export default {
   name: 'HomeView',
@@ -58,6 +40,7 @@ export default {
     }
   },
   components: {
+    Product
   },
   // mounted(){
   //   this.getLatestProducts()
@@ -66,7 +49,8 @@ export default {
   this.getLatestProducts();
 },
 mounted() {
-    this.initializeTyped();
+  this.initializeTyped();
+    document.title = 'Home | Brandy'
   },
   methods:{
     initializeTyped() {
@@ -112,9 +96,9 @@ mounted() {
     //   }
      
     // },
-    getLatestProducts(){
-     
-      axios.get('/api/v1/latest-products/')
+    async getLatestProducts(){
+      this.$store.commit('setIsLoading', true)
+      await axios.get('/api/v1/latest-products/')
       .then(response =>{
         console.log(response)
         this.latestProducts = response.data.data
@@ -122,6 +106,7 @@ mounted() {
       .catch(error =>{
         console.log(error)
       })
+      this.$store.commit('setIsLoading', false)
     }
   }
 }
