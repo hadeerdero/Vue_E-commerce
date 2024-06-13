@@ -1,5 +1,6 @@
 <template>
     <div class="page-product">
+        <div class="container">
         <div class="row">
             <div class="col-9">
                 <figure class="image mb-6">
@@ -13,19 +14,19 @@
             <div class="col-3">
                 <h2 class="subtitle">Information</h2>
                 <p><strong>Price :$</strong>{{ product.price }}</p>
-                <div class="d-flex ">
-                    <div class="control">
+                <div class="row">
+                    <div class="control col-6">
                         <input type="number" class="input" min="1" v-model=quantity>
 
                     </div>
-                    <div class="control">
+                    <div class="control col-6">
                         <a class="btn bg-dark text-light" @click="addToCart">Add to cart</a>
 
                     </div>
-
                 </div>
             </div>
         </div>
+    </div>
         <Toast   position="top-left" />
     </div>
 
@@ -82,8 +83,8 @@ export default {
 .btn{
     border-radius: unset;
 }
-.control a, input{
-    height: 60%;
-
-}
 </style>
+    <!-- .control a, input{
+        height: 60%;
+    
+    } -->
