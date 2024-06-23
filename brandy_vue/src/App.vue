@@ -1,8 +1,14 @@
 <template>
-  <div id="app">
+  <div >
     <nav class="navbar navbar-expand-lg navbar-light ">
       <div class="container">
         <a class="navbar-brand" href="/"><strong>Brandy</strong></a>
+        <form class="my-2 my-lg-0" method="get" action="/search">
+          <div class="search-wrapper">
+            <input class="form-control mr-sm-2" type="search" placeholder="What are you looking for?" aria-label="Search" name="query">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </div>
+        </form>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main"
           aria-controls="main" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -25,7 +31,7 @@
               <router-link to="/" class="btn btn-light  p-lg-2 me-2">Log in</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/" class="btn btn-success p-lg-2 ">
+              <router-link to="/cart" class="btn btn-success p-lg-2 ">
                 <span class="icon"> <i class="fas fa-shopping-cart"></i></span>
                 <span>Cart({{ cartTotalLength }})</span>
               </router-link>

@@ -1,6 +1,6 @@
 <template>
     <div class="product-card">
-        <div class="product-img">
+        <div class=" row product-img">
             <img :src="product.get_thumbnail">
             <div class="overlay">
                 <button class="btn-add-to-cart">

@@ -1,8 +1,8 @@
 <template>
     <div class="page-product">
-        <div class="container">
-        <div class="row">
-            <div class="col-9">
+        
+        <div class="row m-0">
+            <div class="col-sm-12 col-md-6">
                 <figure class="image mb-6">
                     <img :src="product.get_thumbnail">
 
@@ -11,22 +11,24 @@
                 <p>{{ product.description }}</p>
 
             </div>
-            <div class="col-3">
+            <div class="col-sm-12 col-md-6">
                 <h2 class="subtitle">Information</h2>
                 <p><strong>Price :$</strong>{{ product.price }}</p>
-                <div class="row">
-                    <div class="control col-6">
+                <div class="col-12">
+                     <div class="add-to-cart-wrapper">
+                    <input class="input form-control mr-sm-2 " type="number" min="1" v-model=quantity>
+                    <button class="btn btn-dark my-2 my-sm-0"  @click="addToCart">Add to cart</button>
+                    </div>
+                     <!-- <div class="control col-6">
                         <input type="number" class="input" min="1" v-model=quantity>
 
                     </div>
                     <div class="control col-6">
                         <a class="btn bg-dark text-light" @click="addToCart">Add to cart</a>
-
-                    </div>
+                    </div>  -->
                 </div>
             </div>
         </div>
-    </div>
         <Toast   position="top-left" />
     </div>
 
