@@ -1,7 +1,7 @@
 <template>
     <div class="product-card">
         <div class="product-img">
-            <img class="w-100" :src="product.get_thumbnail">
+            <img :src="product.get_thumbnail">
             <div class="overlay">
                 <button class="btn-add-to-cart">
                     Add to Cart

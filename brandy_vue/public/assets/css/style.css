@@ -72,9 +72,9 @@ body{
     transform: scale(1.1);
 }
 .product-image{
-    width: 100%;
+    width: 50%;
     position: relative;
-    height: 200px;
+    height: 100px;
     overflow: hidden;
 }
 .product-image img{ 

@@ -4,10 +4,10 @@
             <div class="col-12">
                 <h2 class="">{{ category.name }}</h2>
             </div>
-
-            <div v-for="product in category.products" :key="product.id">
+           
+            <div class="col-3" v-for="product in category.products" :key="product.id">
                 <Product :product="product"></Product>
-            </div>
+        </div>
         </div>
     </div>
 </template>
