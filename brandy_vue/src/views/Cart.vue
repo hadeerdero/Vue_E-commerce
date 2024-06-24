@@ -114,13 +114,15 @@ export default {
       this.updateCart();
     },
     updateCart() {
-      localStorage.setItem("cart", JSON.stringify(this.$store.state.cart));
+    console.log("this.$store.state.cart", this.$store.state.cart)
+    localStorage.setItem('cart',JSON.stringify(this.$store.state.cart))
     },
     removeFromCart(item) {
         console.log("delete function")
       this.cart.items = this.cart.items.filter
         (i => i.product.id !== item.product.id
       );
+      this.$store.commit('removeFromCart', item)
       this.updateCart();
     },
   },

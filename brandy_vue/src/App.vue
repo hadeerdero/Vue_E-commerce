@@ -27,8 +27,11 @@
               <router-link to="/winter" class="nav-link p-lg-2">Winter</router-link>
             </li>
 
-            <li class="nav-item login-btn">
-              <router-link to="/" class="btn btn-light  p-lg-2 me-2">Log in</router-link>
+            <li class="nav-item login-btn" v-if="$store.state.isAuthenticated">
+              <router-link to="/my-account" class="btn btn-light  p-lg-2 me-2">My account</router-link>
+            </li>
+            <li class="nav-item login-btn" v-else>
+              <router-link to="/log-in" class="btn btn-light  p-lg-2 me-2">Log in</router-link>
             </li>
             <li class="nav-item">
               <router-link to="/cart" class="btn btn-success p-lg-2 ">
@@ -64,6 +67,8 @@
 
 </template>
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -76,6 +81,12 @@ export default {
 
   beforeCreate() {
     this.$store.commit('initializeStore')
+    const token = this.$store.state.token
+    if(token){
+      axios.defaults.headers.common['Authorization'] = "Token " + token
+    }else{
+      axios.defaults.headers.common['Authorization'] = ""
+    }
   },
   mounted() {
     this.cart = this.$store.state.cart
