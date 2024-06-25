@@ -99,6 +99,8 @@
 
 </template>
 <script>
+import axios from 'axios';
+
 export default {
     name:'Checkout',
     data(){
@@ -133,6 +135,12 @@ export default {
     mounted(){
         document.title= "Checkout | Brandy"
         this.cart = this.$store.state.cart
+        if(this.cartTotalLength > 0){
+            this.stripe = Stripe('sk_test_4eC39HqLyjWDarjtT1zdp7dc')
+            const elements = this.stripe.elements()
+            this.card = elements.create('cart',{hidePostalCode:true})
+            this.card.mount('#card-element')
+        }
     },
     methods:{
         getItemTotal(item){
@@ -197,7 +205,14 @@ export default {
                 "items" : items,
                 "stripe_token":token.id
             }
-
+            await axios.post('/api/v1/checkout/', data).then(res=>{
+                this.$store.commit("clearCart")
+                this.$router.push('/cart/success')
+            }).catch(error=>{
+                this.errors.push('Something went wrong. Please try again')
+                console.log(error)
+            })
+            this.$store.commit('setIsLoading',false)
         }
     }
 }
