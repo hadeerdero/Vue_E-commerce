@@ -5,7 +5,7 @@
                 <h2 class="">{{ category.name }}</h2>
             </div>
            
-            <div class="col-3" v-for="product in category.products" :key="product.id">
+            <div class="col-lg-3 col-md-6 col-sm-12" v-for="product in category.products" :key="product.id">
                 <Product :product="product" @addToCart="addToCart"></Product>
         </div>
         </div>
