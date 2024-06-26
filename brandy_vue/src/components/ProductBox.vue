@@ -1,5 +1,5 @@
 <template>
-    <div class="product-card">
+    <div class="product-card" style="width: 10rem;">
         <div class="row product-img">
             <img class="card-img-top" :src="product.get_thumbnail">
             <div class="overlay">

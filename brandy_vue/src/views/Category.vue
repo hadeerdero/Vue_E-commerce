@@ -1,6 +1,6 @@
 <template>
     <div class="page-category">
-        <div class="row">
+        <div class="row m-5">
             <div class="col-12">
                 <h2 class="">{{ category.name }}</h2>
             </div>

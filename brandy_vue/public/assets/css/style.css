@@ -84,14 +84,14 @@ html, body{
     height: 100px;
     overflow: hidden;
 }
-/* .product-image img{ 
+.product-card .product-image img{ 
     width: 100%;
     height: 50%;
     object-fit: cover;
     transition: transform .3s ease;
 
 
-} */
+}
 .product-image:hover img {
     transform: scale(1.1);
 }
