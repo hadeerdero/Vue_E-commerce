@@ -39,7 +39,7 @@ export default{
     },
     methods:{
         getItemTotal(item){
-            return item.quantity * item.price
+            return item.quantity * item.product.price
         },
         orderTotalLength(order){
             return order.items.reduce((acc,curVal)=>{
