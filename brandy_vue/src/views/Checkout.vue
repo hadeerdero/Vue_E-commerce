@@ -100,7 +100,7 @@
 </template>
 <script>
 import axios from 'axios';
-
+import { loadStripe } from '@stripe/stripe-js';
 export default {
     name:'Checkout',
     data(){
@@ -132,15 +132,17 @@ export default {
       }, 0);
     },
   },
-    mounted(){
-        document.title= "Checkout | Brandy"
-        this.cart = this.$store.state.cart
-        if(this.cartTotalLength > 0){
-            this.stripe = Stripe('sk_test_4eC39HqLyjWDarjtT1zdp7dc')
-            const elements = this.stripe.elements()
-            this.card = elements.create('cart',{hidePostalCode:true})
-            this.card.mount('#card-element')
-        }
+   async mounted(){
+        document.title = "Checkout | Brandy";
+    this.cart = this.$store.state.cart;
+
+    if (this.cartTotalLength > 0) {
+      this.stripe = await loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
+      const elements = this.stripe.elements();
+      this.card = elements.create('card', { hidePostalCode: true });
+      this.card.mount('#card-element');
+    }
     },
     methods:{
         getItemTotal(item){
@@ -173,8 +175,9 @@ export default {
                 this.$store.commit("setIsLoading",true)
                 this.stripe.createToken(this.card).then(result=>{
                     if(result.error){
+                        console.log(result.error)
                         this.$store.commit("setIsLoading",false)
-                        this.errors.push('Something went wring with Stripe. Please try again')
+                        this.errors.push('Something went wrong with Stripe. Please try again')
                         console.log(result.error.message)
                     }else{
                         this.stripeTokenHandler(result.token)
@@ -206,7 +209,8 @@ export default {
                 "stripe_token":token.id
             }
             await axios.post('/api/v1/checkout/', data).then(res=>{
-                this.$store.commit("clearCart")
+                // this.$store.commit("clearCart")
+                localStorage.setItem('cart',JSON.stringify(this.$store.state.cart))
                 this.$router.push('/cart/success')
             }).catch(error=>{
                 this.errors.push('Something went wrong. Please try again')
