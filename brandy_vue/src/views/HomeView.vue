@@ -17,7 +17,7 @@
     </div>
     <div class="wrapper">
     <div v-for="product in latestProducts" :key="product.id">
-        <Product :product="product"></Product>
+        <Product :product="product" @addToCart="addToCart"></Product>
     </div>
 
     </div>
@@ -107,7 +107,17 @@ mounted() {
         console.log(error)
       })
       this.$store.commit('setIsLoading', false)
-    }
+    },
+    addToCart(product) {
+      console.log("product Home view")
+            const item = {
+                product: product,
+                quantity : 1
+            }
+            this.$store.commit('addToCart', item)
+            // const toast = useToast()
+        // toast.add({ severity: 'success', summary: 'Success Message', detail: 'Order submitted', life: 3000 });
+        }
   }
 }
 </script>

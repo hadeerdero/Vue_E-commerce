@@ -6,7 +6,7 @@
             </div>
            
             <div class="col-3" v-for="product in category.products" :key="product.id">
-                <Product :product="product"></Product>
+                <Product :product="product" @addToCart="addToCart"></Product>
         </div>
         </div>
     </div>
@@ -59,6 +59,15 @@ export default {
                 })
 
             this.$store.commit('setIsLoading', false)
+        },
+        addToCart(product) {
+            const item = {
+                product: product,
+                quantity : 1
+            }
+            this.$store.commit('addToCart', item)
+            // const toast = useToast()
+        // toast.add({ severity: 'success', summary: 'Success Message', detail: 'Order submitted', life: 3000 });
         }
     }
 }

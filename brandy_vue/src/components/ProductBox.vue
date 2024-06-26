@@ -3,11 +3,11 @@
         <div class="row product-img">
             <img class="card-img-top" :src="product.get_thumbnail">
             <div class="overlay">
-                <button class="btn-add-to-cart">
+                <button class="btn-add-to-cart" @click="addToCart">
                     Add to Cart
                 </button>
                 <button class="view-details">
-                    <router-link :to="product.get_absolute_url"> View Details</router-link>
+                    <router-link class="text-decoration-none text-dark" :to="product.get_absolute_url"> View Details</router-link>
                 </button>
             </div>
         </div>
@@ -26,6 +26,11 @@ export default {
     name: 'ProductBox',
     props: {
         product:Object
+    },methods:{
+        addToCart() {
+            console.log("productBox",this.product)
+           this.$emit('addToCart',this.product)
+        }
     }
 }
 </script>

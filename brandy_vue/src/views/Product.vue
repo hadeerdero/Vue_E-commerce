@@ -1,7 +1,6 @@
 <template>
     <div class="page-product">
-        
-        <div class="row m-0">
+        <div class="row m-5">
             <div class="col-sm-12 col-md-6">
                 <figure class="image mb-6">
                     <img :src="product.get_thumbnail">

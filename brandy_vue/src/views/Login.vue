@@ -10,7 +10,7 @@
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Password</label>
-                        <input v-model="password" class="form-control" type="password" placeholder="" aria-label="default input example">
+                        <input v-model="password" class="form-control" type="password" placeholder="password" aria-label="default input example">
                       </div>
                     
                       <div class="p-3 mb-2 bg-danger text-white" v-if="errors.length">
