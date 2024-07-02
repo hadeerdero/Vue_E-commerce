@@ -12,7 +12,7 @@
     </div>
    </section>
    <div>
-    <div class="d-flex justify-content-center p-5">
+    <div class="d-flex justify-content-center p-5" v-if="latestProducts.length > 0">
       <h2>Latest products</h2>
     </div>
     <div class="wrapper">

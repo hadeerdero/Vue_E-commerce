@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div class="main-div" :style="{height:'100px;'}">
     <nav class="navbar navbar-expand-lg navbar-light ">
       <div class="container">
         <a class="navbar-brand" href="/"><strong>Brandy</strong></a>
@@ -60,9 +60,14 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </nav> -->
-    <footer class="footer">
-      <p class="text-center">Copyright (c) 2024</p>
-    </footer>
+    <footer class="bg-body-tertiary text-center text-lg-start mt-auto">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2020 Copyright:
+    <a class="text-body" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
   </div>
 
 </template>

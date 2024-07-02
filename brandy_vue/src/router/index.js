@@ -9,6 +9,7 @@ import Login from '../views/Login.vue'
 import MyAccount from '@/views/MyAccount.vue'
 import Checkout from '@/views/Checkout.vue'
 import Success from '@/views/Success.vue'
+import PrintingForm  from '@/views/PrintingForm.vue'
 import store from '@/store'
 const routes = [
   {
@@ -46,6 +47,12 @@ const routes = [
     path: '/cart/success',
     name: 'Success',
     component: Success,
+   
+  },
+  {
+    path: '/printingForm',
+    name: 'printingForm',
+    component: PrintingForm,
    
   },
   {
