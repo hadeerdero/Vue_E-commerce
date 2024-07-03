@@ -50,7 +50,7 @@ const routes = [
    
   },
   {
-    path: '/printingForm',
+    path: '/printing-form',
     name: 'printingForm',
     component: PrintingForm,
    
