@@ -27,8 +27,8 @@
 
         <div v-if="form.fieldType === 'textarea'" class="form-group">
           <label for="editor">Editor</label>
-          <!-- <textarea id="editor" class="form-control" v-model="form.editorContent"></textarea> -->
-          <ckeditor :editor="editor" v-model="form.editorContent" :config="editorConfig"></ckeditor>
+          <textarea id="editor" class="form-control" v-model="form.editorContent"></textarea>
+          <!-- <ckeditor :editor="editor" v-model="form.editorContent" :config="editorConfig"></ckeditor> -->
         </div>
         
         <div v-if="form.fieldType === 'table'" class="form-group">
@@ -96,7 +96,7 @@
         <div v-for="(field, index) in fields" :key="index">
 
           <span :class="{ 'visibility-hidden': !field.labelVisability }">{{ field.labelName }} : </span> <span :class="{ 'visibility-hidden': !field.valueVisability }">{{ field.textValue }}</span>
-          <div :class="{ 'visibility-hidden': !field.editorContentVisability }"> {{convertToPlainText(field.editorContent)}} </div>
+          <div :class="{ 'visibility-hidden': !field.editorContentVisability }"> {{field.editorContent}} </div>
 
         </div>
 
@@ -138,23 +138,20 @@
   
   <script>
   import _ from 'lodash';
-  import { ClassicEditor, Bold, Essentials, Italic, Mention, Paragraph, Undo } from 'ckeditor5';
-  import CKEditor from '@ckeditor/ckeditor5-vue';
-  import 'ckeditor5/ckeditor5.css';
-import 'ckeditor5-premium-features/ckeditor5-premium-features.css';
+  // import { ClassicEditor, Bold, Essentials, Italic, Mention, Paragraph, Undo } from 'ckeditor5';
   export default {
     components: {
-        ckeditor: CKEditor.component
+        // ckeditor: CKEditor.component
     },
     data() {
       return {
         plainText:'',
-        editor: ClassicEditor,
-            editorData: '<p>Hello from CKEditor 5 in Vue!</p>',
-            editorConfig: {
-              plugins: [ Bold, Essentials, Italic, Paragraph, Undo ],
-              toolbar: [ 'undo', 'redo', '|', 'bold', 'italic' ]
-            },
+        // editor: ClassicEditor,
+        //     editorData: '<p>Hello from CKEditor 5 in Vue!</p>',
+        //     editorConfig: {
+        //       plugins: [ Bold, Essentials, Italic, Paragraph, Undo ],
+        //       toolbar: [ 'undo', 'redo', '|', 'bold', 'italic' ]
+        //     },
         form: {
         labelVisability:false,
         valueVisability:false,
@@ -195,12 +192,12 @@ import 'ckeditor5-premium-features/ckeditor5-premium-features.css';
     this.tableState = _.cloneDeep(this.tableData)
   },
   methods: {
-    convertToPlainText(editorContent) {
-      let div = document.createElement('div');
-      div.innerHTML = editorContent;
-      this.plainText = div.textContent || div.innerText || '';
-      return this.plainText
-    },
+    // convertToPlainText(editorContent) {
+    //   let div = document.createElement('div');
+    //   div.innerHTML = editorContent;
+    //   this.plainText = div.textContent || div.innerText || '';
+    //   return this.plainText
+    // },
     editCell(rowIndex, colIndex) {
       if (!this.editing[rowIndex]) {
         this.editing[rowIndex] = [];
