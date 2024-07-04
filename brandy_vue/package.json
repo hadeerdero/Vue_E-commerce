@@ -7,10 +7,13 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-vue": "^6.0.0",
     "@popperjs/core": "^2.11.8",
     "@stripe/stripe-js": "^4.0.0",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
+    "ckeditor5": "^42.0.0",
+    "ckeditor5-premium-features": "^42.0.0",
     "core-js": "^3.8.3",
     "primevue": "^3.52.0",
     "typed.js": "^2.1.0",
